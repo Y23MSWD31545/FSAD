@@ -1,0 +1,16 @@
+.navbar ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    align-items: center; /* Ensures vertical alignment */
+    justify-content: space-around; /* Evenly distributes items */
+  }
+  
+  .navbar ul li {
+    padding: 10px 15px;
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  

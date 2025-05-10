@@ -10,6 +10,7 @@ import Login from "./Pages/Login";
 import Register from "./Pages/Register";
 import Payment from "./Pages/Payment";
 import PaymentForm from "./Pages/Payment";
+import GPSTracker from "./componens/GPSTracker";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/payment" element={<PaymentForm />} />
+          <Route path="/gpstracker" element={<GPSTracker />} />
 
           
         </Routes>

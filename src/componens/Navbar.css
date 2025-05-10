@@ -1,4 +1,5 @@
 .navbar ul {
+  width: 100vw;
     display: flex;
     list-style: none;
     padding: 0;
@@ -8,9 +9,34 @@
   }
   
   .navbar ul li {
-    padding: 10px 15px;
+    padding: 10px 1px;
     color: white;
     text-decoration: none;
     cursor: pointer;
   }
+  /* Add these styles to your existing Navbar.css */
+
+.username-display {
+  position: relative;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 120px;
+  white-space: nowrap;
+}
+
+.navbar ul li:hover {
+  background-color: rgb(50, 50, 50);
+  transition: all 0.3s ease;
+}
+
+/* Style for logout button */
+.navbar ul li[onClick] {
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .username-display {
+    max-width: 80px;
+  }
+}
   

@@ -2,6 +2,14 @@ import React, { useState } from "react";
 import "../componens/Buyacar.css";
 import Carcards from "../Pages/Carcards";
 import car1 from "../imgs/car1.avif";
+import car2 from "../imgs/car2.avif";
+import car3 from "../imgs/car3.jpg";
+import car4 from "../imgs/car4.avif";
+import car5 from "../imgs/car5.avif"; 
+import car6 from "../imgs/car6.webp"; 
+import car7 from "../imgs/car7.webp"; 
+import car8 from "../imgs/car8.avif"; 
+import car9 from "../imgs/car9.jpg"; 
 import { useNavigate } from "react-router-dom";
 
 const Buyacar = () => {
@@ -24,7 +32,7 @@ const Buyacar = () => {
     {
       company: "Honda",
       model: "City",
-      image: car1,
+      image: car2,
       customPickup: true,
       speed: "110 Km/h",
       seating: "5 Seater",
@@ -34,7 +42,7 @@ const Buyacar = () => {
     {
       company: "Hyundai",
       model: "Creta",
-      image: car1,
+      image: car3,
       customPickup: true,
       speed: "115 Km/h",
       seating: "5 Seater",
@@ -44,12 +52,62 @@ const Buyacar = () => {
     {
       company: "Maruti Suzuki",
       model: "Swift",
-      image: car1,
+      image: car4,
       customPickup: true,
       speed: "100 Km/h",
       seating: "5 Seater",
       luggage: "4 luggage",
       price: "#15k/day"
+    },
+    {
+      company: "BMW",
+      model: "X5",
+      image:car5, // Use car5 if available, otherwise fallback to car1
+      customPickup: true,
+      speed: "150 Km/h",
+      seating: "5 Seater",
+      luggage: "8 luggage",
+      price: "#50k/day"
+    },
+    {
+      company: "Audi",
+      model: "A6",
+      image:car6, // Use car6 if available, otherwise fallback to car2
+      customPickup: true,
+      speed: "140 Km/h",
+      seating: "5 Seater",
+      luggage: "7 luggage",
+      price: "#45k/day"
+    },
+    {
+      company: "Mercedes-Benz",
+      model: "C-Class",
+      image:car7, // Use car7 if available, otherwise fallback to car3
+      customPickup: true,
+      speed: "160 Km/h",
+      seating: "5 Seater",
+      luggage: "9 luggage",
+      price: "#55k/day"
+    },
+    {
+      company: "Volkswagen ",
+      model: "Tiguan",
+      image:car8, 
+      customPickup: true,
+      speed: "160 Km/h",
+      seating: "5 Seater",
+      luggage: "9 luggage",
+      price: "#55k/day"
+    },
+    {
+      company: "Volvo",
+      model: "XC40",
+      image:car9, // Use car5 if available, otherwise fallback to car4
+      customPickup: true,
+      speed: "130 Km/h",
+      seating: "7 Seater",
+      luggage: "10 luggage",
+      price: "#40k/day"
     }
   ];
 
@@ -95,10 +153,19 @@ const Buyacar = () => {
           five2={car.seating}
           five3={car.luggage}
           six1={car.price}
-          six2={<button onClick={handleBookNow}>Book Now</button>}
+          six2={<button onClick={handleBookNow}>Rent Now</button>}
         />
       </div>
     ));
+  };
+
+  // Function to split cars into chunks of given size
+  const chunkArray = (array, chunkSize) => {
+    const chunks = [];
+    for (let i = 0; i < array.length; i += chunkSize) {
+      chunks.push(array.slice(i, i + chunkSize));
+    }
+    return chunks;
   };
 
   return (
@@ -148,18 +215,12 @@ const Buyacar = () => {
           )
         ) : (
           <>
-            <div className="carrow">
-              {renderCarCards(carData.slice(0, 3))}
-            </div>
-            <div className="carrow">
-              {renderCarCards(carData.slice(0, 3))}
-            </div>
-            <div className="carrow">
-              {renderCarCards(carData.slice(0, 3))}
-            </div>
-            <div className="carrow">
-              {renderCarCards(carData.slice(0, 3))}
-            </div>
+            {/* Display all cars in chunks of 3 */}
+            {chunkArray(carData, 3).map((carChunk, index) => (
+              <div className="carrow" key={index}>
+                {renderCarCards(carChunk)}
+              </div>
+            ))}
           </>
         )}
       </div>

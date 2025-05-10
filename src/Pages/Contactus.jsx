@@ -1,41 +1,60 @@
-import React from "react";
+import React, { useState } from "react";
 import "../componens/Buyacar.css";
 
 const Contactus = () => {
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setIsSubmitted(true);
+    // Optional: e.target.reset();
+  };
+
   return (
     <div className="container">
       <div className="contactusmaindiv">
         <h1>Contact us</h1>
-        <form className="form" action="">
+        <form className="form" onSubmit={handleSubmit}>
           <input
-            type="text "
+            type="text"
             id="fname"
             name="fname"
-            placeholder="enter your name"
+            placeholder="Enter your name"
             required
           />
           <br />
           <input
-            type="email "
+            type="email"
             id="email"
             name="email"
-            placeholder="enter your email"
+            placeholder="Enter your email"
             required
           />
           <br />
           <input
-            type="number "
+            type="number"
             id="phone"
             name="phone"
-            placeholder="enter your phone  "
+            placeholder="Enter your phone"
             required
           />
           <br />
-          <input
+          <textarea
             id="message"
-            type="text"
-            placeholder="Drop your message"
-          />{" "}
+            name="message"
+            placeholder="Enter your message"
+            required
+            style={{
+              width: "100%",
+              padding: "10px",
+              borderRadius: "5px",
+              border: "1px solid #ccc",
+              fontFamily: "inherit",
+              fontSize: "1rem",
+              resize: "none",
+            }}
+            rows="4"
+          ></textarea>
           <br />
           <select
             style={{
@@ -44,20 +63,23 @@ const Contactus = () => {
               border: "none",
               boxShadow: "0 0 8px 0 grey",
             }}
-            name=""
+            name="contactInfo"
             id="selectopt"
           >
-            <option value="">
-              {" "}
-              <b>--------------- our contact info ---------------</b>
-            </option>
-            <option value="">PHone : +91 7989120278</option>
-            <option value="">Email : Premimumcars24@gmail.com</option>
-            <option value="">Address : 123, ABC Road , opp PVP mall</option>
-          </select>{" "}
+            <option value="">--- Our contact info ---</option>
+            <option value="phone">Phone: +91 8978419128</option>
+            <option value="email">Email: Premiumcars24@gmail.com</option>
+            <option value="address">Address: 123, ABC Road, opp PVP mall</option>
+          </select>
           <br />
-          <button>Submit</button>
+          <button type="submit">Submit</button>
         </form>
+
+        {isSubmitted && (
+          <p style={{ color: "green", marginTop: "1rem" }}>
+            Submitted successfully!
+          </p>
+        )}
       </div>
     </div>
   );

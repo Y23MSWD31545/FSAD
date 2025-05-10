@@ -1,6 +1,6 @@
 import React from "react";
 import sec1img from "../imgs/sec1img.png";
-import Card1 from "../componens/card1";
+import Card1 from "../componens/Card1.jsx";
 import div2img from "../imgs/div2img.png";
 import sec3img from "../imgs/sec3img.png";
 import sec4img from "../imgs/sec4img.webp";
